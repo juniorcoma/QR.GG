@@ -1,9 +1,46 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+:root {
+  --black: #000;
+  --white: #fff;
+  --bg-main: #f1f5ff;
+  --primary-100: #edf1fc;
+  --primary-200: #c6d6fd;
+  --primary-300: #aac1fc;
+  --primary-400: #8eadfc;
+  --primary-500: #7298fb;
+  --primary-600: #5584fa;
+  --primary-700: #376ef9;
+  --gray-50: #f9f9f9;
+  --gray-100: #ececec;
+  --gray-200: #e3e3e3;
+  --gray-300: #cdcdcd;
+  --gray-400: #b4b4b4;
+  --gray-500: #9b9b9b;
+  --gray-600: #676767;
+  --gray-700: #424242;
+  --gray-750: #2f2f2f;
+  --gray-800: #212121;
+  --gray-900: #171717;
+  --gray-950: #0d0d0d;
+  --game-item-victory-200: #2b58b7;
+  --game-item-victory-100: #007bff;
+  --game-item-lose-200: #a62840;
+  --game-item-lose-100: #ff4c4c;
+  --text-color: #3d3d3d;
+}
 @layer base {
   html {
     font-size: 62.5%;
+    color: var(--text-color);
+  }
+  .full-screen-layout {
+    min-width: 37.5rem;
+    width: 100%;
+    max-width: 76rem;
+    margin: auto;
+    min-height: 100vh;
+    background: var(--bg-main);
   }
 }

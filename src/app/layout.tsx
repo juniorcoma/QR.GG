@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import localFont from 'next/font/local';
+import ReactQueryProviders from '@/hook/query/useReactQuery';
 
 const AppleSDGodicNeo = localFont({
   src: [
@@ -64,7 +65,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko" className={AppleSDGodicNeo.className}>
-      <body>{children}</body>
+      <body style={{ background: '#FAFAFA' }}>
+        <ReactQueryProviders>
+          <div className="full-screen-layout">{children}</div>
+        </ReactQueryProviders>
+      </body>
     </html>
   );
 }

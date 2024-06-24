@@ -13,3 +13,7 @@ export const riotPlatformHost = axios.create({
   },
   baseURL: process.env.RIOT_PLATFORM_HOST,
 });
+
+export const client = axios.create({
+  baseURL: process.env.CLIENT,
+});

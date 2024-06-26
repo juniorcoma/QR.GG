@@ -27,3 +27,26 @@ export async function GET(request: Request) {
     return NextResponse.json({ error: '에러가 발생했습니다. 다시 시도해 주세요' }, { status: 500 });
   }
 }
+
+export async function POST(request: Request) {
+  const authHeader = request.headers.get('Authorization');
+  if (!authHeader) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
+  const token = authHeader.startsWith('Bearer') ? authHeader.substring(7) : null;
+
+  if (!token) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
+  const { userId } = jwt.verify(token, process.env.JWT_SECRET_KEY as string) as UserPayload;
+
+  try {
+    await connectToMongoDB();
+    const requestData = await request.json();
+    await User.updateOne({ _id: userId }, { ...requestData });
+    const successData = await User.findById(userId);
+    return NextResponse.json(successData, { status: 201 });
+  } catch (err) {
+    return NextResponse.json({ error: 'server Error' }, { status: 500 });
+  }
+}

@@ -35,9 +35,7 @@ export async function GET(request: Request) {
     if (checkUser) {
       //로그인
       const token = jwt.sign({ userId: checkUser._id }, process.env.JWT_SECRET_KEY as string);
-      return NextResponse.redirect(
-        `${process.env.FRONTEND_URL}/oauth/success?token=${token}&username=${checkUser.name}&riotname=${checkUser.riot_game_name}&tagid=${checkUser.riot_tag_id}`,
-      );
+      return NextResponse.redirect(`${process.env.FRONTEND_URL}/oauth/success?token=${token}`);
     } else {
       //회원가입
       const newUser = new User({
@@ -46,9 +44,7 @@ export async function GET(request: Request) {
 
       await newUser.save();
       const token = jwt.sign({ userId: newUser._id }, process.env.JWT_SECRET_KEY as string);
-      return NextResponse.redirect(
-        `${process.env.FRONTEND_URL}/oauth/success?token=${token}&username=${checkUser?.name}&riotname=${checkUser?.riot_game_name}&tagid=${checkUser?.riot_tag_id}`,
-      );
+      return NextResponse.redirect(`${process.env.FRONTEND_URL}/oauth/success?token=${token}`);
     }
   } catch (err) {
     if (err instanceof AxiosError) {

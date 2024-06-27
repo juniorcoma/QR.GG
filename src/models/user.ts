@@ -2,7 +2,7 @@ import mongoose, { Schema } from 'mongoose';
 
 const UserSchema = new Schema({
   user_id: {
-    require: true,
+    required: false,
     type: Number,
   },
   name: {
@@ -16,6 +16,12 @@ const UserSchema = new Schema({
   },
   profile_img_url: {
     type: String,
+  },
+  status: {
+    type: String,
+    enum: ['pending', 'active'],
+    required: false,
+    default: 'pending',
   },
 });
 

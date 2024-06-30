@@ -36,6 +36,9 @@ const config: Config = {
         'game-item-lose-100': 'var(--game-item-lose-100)',
         'game-item-lose-200': 'var(--game-item-lose-200)',
       },
+      screens: {
+        'max-md': { max: '480px' },
+      },
     },
   },
   plugins: [],

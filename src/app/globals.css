@@ -43,4 +43,20 @@
     min-height: 100vh;
     background: var(--bg-main);
   }
+  .navbar-layout {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 37.5rem;
+    width: 100%;
+    max-width: 76rem;
+    height: 8.2rem;
+    background-color: #fff;
+    border-top-left-radius: 2.4rem;
+    border-top-right-radius: 2.4rem;
+    padding: 1.8rem 4.8rem;
+    z-index: 1000;
+    box-shadow: 0px -2px 15px rgba(0, 0, 0, 0.2);
+  }
 }

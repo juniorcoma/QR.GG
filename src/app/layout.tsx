@@ -69,6 +69,7 @@ export default function RootLayout({
         <ReactQueryProviders>
           <div className="full-screen-layout">{children}</div>
         </ReactQueryProviders>
+        <div id="modal-portal"></div>
       </body>
     </html>
   );

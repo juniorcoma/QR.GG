@@ -43,7 +43,7 @@ export async function POST(request: Request) {
   try {
     await connectToMongoDB();
     const requestData = await request.json();
-    await User.updateOne({ _id: userId }, { ...requestData });
+    await User.updateOne({ _id: userId }, { ...requestData, status: 'active' });
     const successData = await User.findById(userId);
     return NextResponse.json(successData, { status: 201 });
   } catch (err) {

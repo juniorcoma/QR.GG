@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import LoginRenderContainer from './LoginRender';
 
 export default function Header() {
   return (
@@ -7,9 +8,7 @@ export default function Header() {
         <Link href="/">
           <h1 className="text-[2.4rem] font-[900] text-primary-700 ">QR.GG</h1>
         </Link>
-        <Link href="/signin" className="inline-block py-1 px-3 text-[1.4rem] text-white bg-primary-400 rounded">
-          <span>Sign in</span>
-        </Link>
+        <LoginRenderContainer />
       </div>
     </header>
   );

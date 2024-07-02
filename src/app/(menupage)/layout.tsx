@@ -1,5 +1,5 @@
-import Header from '@/components/Header';
 import Navbar from '@/components/Navbar';
+import Header from '@/components/header/Header';
 
 export default function MenupageLayout({
   children,

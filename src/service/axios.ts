@@ -17,3 +17,10 @@ export const riotPlatformHost = axios.create({
 export const client = axios.create({
   baseURL: process.env.CLIENT,
 });
+
+export const authorizationClient = axios.create({
+  headers: {
+    Authorization: `Bearer ${localStorage.getItem('token')}`,
+  },
+  baseURL: process.env.CLIENT,
+});

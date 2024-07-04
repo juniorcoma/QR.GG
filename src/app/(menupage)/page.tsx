@@ -1,7 +1,5 @@
+import SummonerSearchBar from './_components/SummonerSearchBar';
+
 export default function HomePage() {
-  return (
-    <>
-      <h1>gd</h1>
-    </>
-  );
+  return <SummonerSearchBar />;
 }

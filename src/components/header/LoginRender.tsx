@@ -4,11 +4,25 @@ import useGetUser from '@/hook/query/useGetUser';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
 export default function LoginRenderContainer() {
-  const token = localStorage.getItem('token');
-  if (token) {
-    return <Profile />;
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  useEffect(() => {
+    const checkAuth = () => {
+      const token = localStorage.getItem('token');
+      setIsAuthenticated(!!token);
+    };
+
+    checkAuth();
+
+    window.addEventListener('storage', checkAuth);
+    return () => window.removeEventListener('storage', checkAuth);
+  }, []);
+
+  if (isAuthenticated) {
+    return <Profile setIsAuthenticated={setIsAuthenticated} />;
   } else {
     return <Login />;
   }
@@ -22,14 +36,16 @@ function Login() {
   );
 }
 
-function Profile() {
+function Profile({ setIsAuthenticated }) {
   const { data } = useGetUser();
   const router = useRouter();
+
   const handleLogout = () => {
     localStorage.removeItem('token');
+    setIsAuthenticated(false);
     alert('로그아웃 되었습니다');
-    router.refresh();
   };
+
   return (
     <div className="flex items-center gap-2 text-[1.2rem] font-[600]">
       <Image className="rounded-[50%]" src={data?.profile_img_url} width={30} height={30} alt="프로필 이미지" />

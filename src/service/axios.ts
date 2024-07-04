@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
 export const riotRegionalHost = axios.create({
   headers: {
     'X-Riot-Token': process.env.RIOT_DEVELOPMENT_KEY,
@@ -20,7 +20,7 @@ export const client = axios.create({
 
 export const authorizationClient = axios.create({
   headers: {
-    Authorization: `Bearer ${localStorage.getItem('token')}`,
+    Authorization: `Bearer ${token}`,
   },
   baseURL: process.env.CLIENT,
 });

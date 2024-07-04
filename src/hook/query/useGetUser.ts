@@ -8,5 +8,6 @@ export default function useGetUser() {
       const response = await authorizationClient.get('/api/v1/users');
       return response.data;
     },
+    staleTime: Infinity,
   });
 }

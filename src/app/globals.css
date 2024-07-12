@@ -4,31 +4,36 @@
 :root {
   --black: #000;
   --white: #fff;
-  --bg-main: #f1f5ff;
-  --primary-100: #edf1fc;
-  --primary-200: #c6d6fd;
-  --primary-300: #aac1fc;
-  --primary-400: #8eadfc;
-  --primary-500: #7298fb;
-  --primary-600: #5584fa;
-  --primary-700: #376ef9;
-  --gray-50: #f9f9f9;
-  --gray-100: #ececec;
-  --gray-200: #e3e3e3;
-  --gray-300: #cdcdcd;
-  --gray-400: #b4b4b4;
-  --gray-500: #9b9b9b;
-  --gray-600: #676767;
-  --gray-700: #424242;
-  --gray-750: #2f2f2f;
-  --gray-800: #212121;
-  --gray-900: #171717;
-  --gray-950: #0d0d0d;
-  --game-item-victory-200: #2b58b7;
-  --game-item-victory-100: #007bff;
-  --game-item-lose-200: #a62840;
-  --game-item-lose-100: #ff4c4c;
-  --text-color: #3d3d3d;
+  --color-bg-01: #141517;
+  --color-bg-02: #212325;
+  --color-bg-03: #373a3f;
+  --color-bg-04: #2e3033;
+  --color-bg-05: #4d4d4d;
+  --color-bg-06: #c9cedc;
+  --color-bg-07: #dfe2ea;
+  --color-bg-08: hsla(0, 0%, 100%, 0.15);
+  --color-bg-09: #f5f5f5;
+  --color-bg-10: #21242a;
+  --color-content-01: #fff;
+  --color-content-02: #dfe2ea;
+  --color-content-03: #c9cedc;
+  --color-content-04: #9da5b6;
+  --color-content-05: #697183;
+  --color-content-06: #858894;
+  --color-content-07: #525662;
+  --color-content-08: #2e3033;
+  --color-content-09: #141517;
+  --color-main-01: #00ffa3;
+  --color-main-02: rgba(0, 255, 163, 0.9);
+  --color-main-03: rgba(0, 255, 163, 0.8);
+  --color-main-04: rgba(0, 255, 163, 0.8);
+  --color-main-05: rgba(0, 255, 163, 0.3);
+  --color-main-06: rgba(0, 255, 163, 0.2);
+  --color-game-item-01: #28344e;
+  --color-game-item-02: #5383e8;
+  --color-game-item-03: #59343b;
+  --color-game-item-04: #e84057;
+  --color-game-item-05: #f12525;
 }
 @layer base {
   * {
@@ -36,7 +41,10 @@
   }
   html {
     font-size: 62.5%;
-    color: var(--text-color);
+    color: var(--color-content-01);
+  }
+  body {
+    background-color: #232524;
   }
   label {
     display: block;
@@ -44,25 +52,127 @@
   .full-screen-layout {
     min-width: 37.5rem;
     width: 100%;
-    max-width: 76rem;
+    max-width: 76.8rem;
     margin: auto;
     min-height: 100vh;
-    background: var(--bg-main);
+    background: var(--color-bg-01);
   }
-  .navbar-layout {
+  .GNB_Wrap {
     position: fixed;
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
     min-width: 37.5rem;
     width: 100%;
-    max-width: 76rem;
-    height: 8.2rem;
-    background-color: #fff;
-    border-top-left-radius: 2.4rem;
-    border-top-right-radius: 2.4rem;
+    max-width: 76.8rem;
+    background-color: var(--color-bg-01);
     padding: 1.8rem 4.8rem;
     z-index: 1000;
-    box-shadow: 0px -2px 15px rgba(0, 0, 0, 0.2);
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--color-content-04);
+    display: flex;
+    border-top: 1px solid var(--color-bg-06);
+  }
+  .cut-text {
+    width: 6rem;
+    white-space: normal;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-size: 1.1rem; /* 영어나 숫자로만 되어있을 경우에는 잘리지 않는 문제가 발생! 밑의 두 속성을 추가해주면 강제로 줄바꿈을 시키므로써 생략하게 함*/
+    word-break: break-all; /* 긴 단어가 강제로 줄바꿈 되도록 설정 */
+    overflow-wrap: break-word; /* 단어를 줄의 끝에서 강제로 분할 */
+  }
+}
+
+@layer components {
+  .header-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin: auto;
+    padding: 1.6rem 0.8rem;
+    font-size: 2.8rem;
+    gap: 2.4rem;
+  }
+  .img-wrap {
+    margin-bottom: 3.2rem;
+    position: relative;
+    aspect-ratio: 1.62/1;
+  }
+  .main-wrap {
+    width: 70%;
+    margin: auto;
+  }
+  .button_style {
+    font-size: 1.8rem;
+    background-color: var(--color-main-01);
+    width: 100%;
+    padding: 1.2rem 0;
+    border-radius: 1.2rem;
+    cursor: pointer;
+    color: var(--color-content-09);
+    font-weight: 700;
+  }
+  .button_style:disabled {
+    background-color: var(--color-bg-06);
+    color: var(--color-content-06);
+    cursor: auto;
+  }
+
+  .signup-input-style {
+    display: block;
+    width: 100%;
+    background-color: transparent;
+    font-size: 1.6rem;
+    outline: none;
+    padding: 0 0.8rem 0.8rem;
+    border-bottom: 1px solid var(--color-content-04);
+    color: var(--white);
+  }
+  .signup-input-style:focus {
+    border-bottom: 1px solid var(--color-main-01);
+  }
+  .signup-input-style::placeholder {
+    color: var(--color-content-04);
+  }
+  .record-card-deco {
+    width: 0.8rem;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+  }
+  .record-card-content-wrap {
+    flex: 1 1 0%;
+    padding: 0.6rem 0;
+  }
+  .card-action {
+    width: 4rem;
+    display: flex;
+    flex-direction: column;
+  }
+  .svg-button {
+    flex: 1 1 0%;
+    padding: 2.4rem 0.8rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+  }
+  .svg-button:hover {
+    background-color: transparent;
+  }
+  .svg-icon {
+    transition: transform 0.2s;
+  }
+}
+
+@layer utilities {
+  .active .svg-icon {
+    transform: rotate(180deg);
   }
 }

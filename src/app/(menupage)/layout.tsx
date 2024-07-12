@@ -9,7 +9,7 @@ export default function MenupageLayout({
   return (
     <>
       <Header />
-      <main className="px-16 py-14 max-md:px-8">{children}</main>
+      <main className="px-16 py-10 max-md:px-8">{children}</main>
       <Navbar />
     </>
   );

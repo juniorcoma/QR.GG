@@ -15,12 +15,16 @@ export const riotPlatformHost = axios.create({
 });
 
 export const client = axios.create({
-  baseURL: process.env.CLIENT,
+  baseURL: 'http://localhost:3000/api/v1',
 });
 
 export const authorizationClient = axios.create({
   headers: {
     Authorization: `Bearer ${token}`,
   },
-  baseURL: process.env.CLIENT,
+  baseURL: 'http://localhost:3000/api/v1',
+});
+
+export const dataDragon = axios.create({
+  baseURL: 'https://ddragon.leagueoflegends.com',
 });

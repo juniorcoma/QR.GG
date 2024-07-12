@@ -14,9 +14,6 @@ const UserSchema = new Schema({
   riot_tag_id: {
     type: String,
   },
-  profile_img_url: {
-    type: String,
-  },
   status: {
     type: String,
     enum: ['pending', 'active'],

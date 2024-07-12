@@ -4,10 +4,11 @@ import LoginRenderContainer from './LoginRender';
 export default function Header() {
   return (
     <header>
-      <div className="flex justify-between w-[90%] m-auto pb-3 pt-3 items-center">
+      <div className="header-wrap">
         <Link href="/">
-          <h1 className="text-[2.4rem] font-[900] text-primary-700 ">QR.GG</h1>
+          <h1 className="font-[900] text-color-content-02">QR.GG</h1>
         </Link>
+
         <LoginRenderContainer />
       </div>
     </header>

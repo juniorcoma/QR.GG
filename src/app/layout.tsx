@@ -65,11 +65,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko" className={AppleSDGodicNeo.className}>
-      <body style={{ background: '#FAFAFA' }}>
+      <body>
         <ReactQueryProviders>
-          <div className="full-screen-layout">{children}</div>
+          <div id="_next">
+            <div className="full-screen-layout">{children}</div>
+          </div>
         </ReactQueryProviders>
-        <div id="modal-portal"></div>
       </body>
     </html>
   );

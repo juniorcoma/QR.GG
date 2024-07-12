@@ -3,3 +3,9 @@ export interface accountType {
   gameName: string;
   tagLine: string;
 }
+
+export interface SignupDataType {
+  name: string;
+  riot_game_name: string;
+  riot_tag_id: string;
+}

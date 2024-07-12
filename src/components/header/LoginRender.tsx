@@ -1,9 +1,7 @@
 'use client';
 
-import useGetUser from '@/hook/query/useGetUser';
-import Image from 'next/image';
+import SigninIcon from '@/assets/icons/SigninIcon';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 export default function LoginRenderContainer() {
@@ -22,37 +20,33 @@ export default function LoginRenderContainer() {
   }, []);
 
   if (isAuthenticated) {
-    return <Profile setIsAuthenticated={setIsAuthenticated} />;
-  } else {
-    return <Login />;
-  }
-}
-
-function Login() {
-  return (
-    <Link href="/signin" className="inline-block py-1 px-3 text-[1.4rem] text-white bg-primary-400 rounded">
-      <span>Sign in</span>
-    </Link>
-  );
-}
-
-function Profile({ setIsAuthenticated }) {
-  const { data } = useGetUser();
-  const router = useRouter();
-
-  const handleLogout = () => {
-    localStorage.removeItem('token');
-    setIsAuthenticated(false);
-    alert('로그아웃 되었습니다');
-  };
-
-  return (
-    <div className="flex items-center gap-2 text-[1.2rem] font-[600]">
-      <Image className="rounded-[50%]" src={data?.profile_img_url} width={30} height={30} alt="프로필 이미지" />
-      <span>{`${data?.name} 님`}</span>
-      <button onClick={handleLogout} type="button" className="px-3 py-2 bg-primary-700 text-white rounded-lg">
-        로그아웃
+    return (
+      <button
+        type="button"
+        onClick={() => {
+          localStorage.removeItem('token');
+          setIsAuthenticated(false);
+        }}
+        className="relative"
+      >
+        <span className="inline-block p-2 border border-color-main-01 rounded-[50%]">
+          <SigninIcon isLogin />
+        </span>
+        <span className="absolute text-color-main-01 text-[1.2rem] bottom-[-10px] left-[50%] translate-x-[-50%]">
+          ON
+        </span>
       </button>
-    </div>
-  );
+    );
+  } else {
+    return (
+      <Link href="/signin" className="relative">
+        <span className="inline-block p-2 bg-color-bg-06 rounded-[50%]">
+          <SigninIcon />
+        </span>
+        <span className="absolute text-color-bg-06 text-[1.2rem] bottom-[-10px] left-[50%] translate-x-[-50%]">
+          OFF
+        </span>
+      </Link>
+    );
+  }
 }
